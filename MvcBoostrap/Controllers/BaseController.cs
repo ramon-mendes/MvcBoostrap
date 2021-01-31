@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 using FILE = System.IO.File;
 using MvcBoostrap.DAL;
+using MvcBoostrap.Classes;
 
 namespace MvcBoostrap.Controllers
 {

@@ -1,0 +1,11 @@
+﻿<nav class="site">
+	<a href="/" class="mr-3"><img src="~/img/logo.png" /></a>
+	
+	<div id="links">
+		<a class="link @Html.PrintIf((string)ViewBag.action=="Sobre", "active")" href="/Home/Sobre">Sobre</a>
+		<a class="link @Html.PrintIf((string)ViewBag.action=="Contato", "active")" href="/Home/Contato">Contato</a>
+		@*<a class="link last" href="/SuasFotos">Suas fotos</a>*@
+		@*<a class="svg pl-3" href="#"><svg class="icon icon-instagram"><use xlink:href="#instagram"></use></svg></a>
+		<a class="svg" href="#"><svg class="icon icon-facebook-box"><use xlink:href="#facebook-box"></use></svg></a>*@
+	</div>
+</nav>

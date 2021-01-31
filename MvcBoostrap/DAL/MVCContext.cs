@@ -16,6 +16,7 @@ namespace MvcBoostrap.DAL
 
 		public DbSet<UserModel> Users { get; set; }
 		public DbSet<UserManagerModel> UserManagers { get; set; }
+		public DbSet<SampleItemModel> SampleItems { get; set; }
 
 		public const string DEFAULT_USER_EMAIL = "ramon@misoftware.com.br";
 		public const string DEFAULT_USER_PWD = "SEnha123";
@@ -39,6 +40,19 @@ namespace MvcBoostrap.DAL
 					Email = DEFAULT_USER_EMAIL,
 					PWD = DEFAULT_USER_PWD,
 				});
+			});
+
+			modelBuilder.Entity<SampleItemModel>(b =>
+			{
+				for(int i = 1; i < 21; i++)
+				{
+					b.HasData(new SampleItemModel()
+					{
+						Id = i,
+						Name = "Hello!!",
+						Price = 10*i
+					});
+				}
 			});
 		}
 	}

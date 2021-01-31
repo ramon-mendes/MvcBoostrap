@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using MvcBoostrap.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MvcBoostrap.Controllers
 			change_cbk(model);
 			_db.SaveChanges();
 
-			Success(I18N.GlobalTranslate("Saved with success!"));
+			Success(I18N.GlobalTranslate("Salvo com sucesso!"));
 			return model;
 		}
 
@@ -47,7 +48,7 @@ namespace MvcBoostrap.Controllers
 			set.Remove(model);
 			_db.SaveChanges();
 
-			Success(I18N.GlobalTranslate("Deleted with success."));
+			Success(I18N.GlobalTranslate("Removido com sucesso."));
 			return model;
 		}
 	}

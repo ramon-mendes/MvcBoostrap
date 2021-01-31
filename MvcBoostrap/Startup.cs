@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MvcBoostrap.Classes;
 using MvcBoostrap.DAL;
 
 namespace MvcBoostrap
@@ -29,7 +30,21 @@ namespace MvcBoostrap
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllersWithViews();
+			// https://stackoverflow.com/questions/54600273/net-core-3-0-preview-2-razor-views-dont-automatically-recompile-on-change
+			services.AddControllersWithViews(options =>
+			{
+				options.Filters.Add(typeof(AuthFilter));
+			}).AddRazorRuntimeCompilation();
+
+			services.AddHttpContextAccessor();
+
+			services.AddDbContext<MVCContext>(options =>
+				options.UseSqlite(Configuration.GetConnectionString("conn"))
+			);
+
+			services.AddSession();
+
+			services.AddTransient<I18N>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,9 +54,16 @@ namespace MvcBoostrap
 			_db = db;
 			_provider = app.ApplicationServices;
 
-			db.Database.Migrate();
+			//db.Database.Migrate();
+			db.Database.EnsureCreated();
 
-			if(env.IsDevelopment())
+			var t1 = db.Users.ToList();
+			var t2 = db.UserManagers.ToList();
+
+			serviceProvider.GetRequiredService<I18N>();
+
+			//if(env.IsDevelopment())
+			if(true)
 			{
 				app.UseDeveloperExceptionPage();
 			}
@@ -60,6 +82,12 @@ namespace MvcBoostrap
 
 			app.UseEndpoints(endpoints =>
 			{
+				endpoints.MapAreaControllerRoute(
+					name: "areas",
+					areaName: "Admin",
+					pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+				);
+
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,0 +1,18 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/Admin/admin.css",
+    "inputFile": "wwwroot/css/Admin/admin.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/Admin/login.css",
+    "inputFile": "wwwroot/css/Admin/login.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/global.css",
+    "inputFile": "wwwroot/css/global.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/index.css",
+    "inputFile": "wwwroot/css/index.scss"
+  }
+]

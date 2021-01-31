@@ -30,7 +30,7 @@ namespace MvcBoostrap.Models
 		{
 			RuleFor(x => x.Email).EmailAddress().NotEmpty();
 			RuleFor(x => x.PWD).NotEmpty();
-			RuleFor(x => x.Authorized).Must(x => x).WithMessage("Login failed.");
+			RuleFor(x => x.Authorized).Must(x => x).WithMessage("Falha no login.");
 		}
 	}
 }

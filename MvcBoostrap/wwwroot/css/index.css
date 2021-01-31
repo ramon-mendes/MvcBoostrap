@@ -1,0 +1,15 @@
+﻿h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #edf7f7;
+  font-family: 'blenheim_signatureregular', sans-serif;
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 4000; }
+
+main {
+  height: 100%;
+  justify-content: center;
+  align-items: center; }
