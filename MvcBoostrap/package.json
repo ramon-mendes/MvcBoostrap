@@ -1,4 +1,6 @@
 {
+	"name": "test",
+	"description": "test",
 	"requires": true,
 	"lockfileVersion": 1,
 	"dependencies": {
