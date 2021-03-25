@@ -7324,7 +7324,6 @@ nav.site {
         padding-left: 7px; }
 
 main {
-  background: linear-gradient(180deg, rgba(57, 162, 174, 0.02) 0%, rgba(130, 133, 141, 0.2) 57%, rgba(255, 84, 84, 0.1) 100%);
   display: flex;
   flex-direction: column;
   align-items: stretch; }

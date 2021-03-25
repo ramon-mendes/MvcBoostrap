@@ -53,5 +53,10 @@ namespace MvcBoostrap.Classes
 		{
 			return new HtmlString(I18N.GlobalTranslate(key_en));
 		}
+
+		public static string ToHTMLDate(this DateTime dt)
+		{
+			return dt.ToString("yyyy-MM-dd");
+		}
 	}
 }

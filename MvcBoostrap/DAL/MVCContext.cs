@@ -44,13 +44,14 @@ namespace MvcBoostrap.DAL
 
 			modelBuilder.Entity<SampleItemModel>(b =>
 			{
-				for(int i = 1; i < 21; i++)
+				for(int i = 1; i <= 210; i++)
 				{
 					b.HasData(new SampleItemModel()
 					{
 						Id = i,
 						Name = "Hello!!",
-						Price = 10*i
+						Price = 10*i,
+						Dt = DateTime.Now.AddDays(i)
 					});
 				}
 			});

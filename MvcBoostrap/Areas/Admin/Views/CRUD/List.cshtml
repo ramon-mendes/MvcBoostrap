@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SampleItemModel>
+@section scripts {
+	<script src="~/lib/daterangepicker-master/moment.min.js"></script>
+	<link href="~/lib/daterangepicker-master/daterangepicker.css" rel="stylesheet" />
+	<script src="~/lib/daterangepicker-master/daterangepicker.js"></script>
+
+	<script>
+		$('.js-dt').daterangepicker();
+	</script>
+}
+<nav>
+	@Html.Breadcrumb(I18N.GlobalTranslate("Itens"))
+
+	<div class="actions">
+		<div class="container">
+			<div class="wrap">
+				<a href="/Admin/CRUD/Add" class="btn btn-primary">
+					<svg class="icon icon-plus-2"><use xlink:href="#plus-2"></use></svg> @Html.Translate("Add")
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="container content">
+	<form method="post" class="area-search">
+		<h3>@Html.Translate("Search")</h3>
+
+		<div class="row">
+			<div class="col-3">
+				@Html.Translate("Name"):
+				<input type="text" name="@nameof(UI_ItensSearch.Name)" value="@ViewBag.search.Name" class="form-control" />
+			</div>
+
+			<div class="col-3">
+				@Html.Translate("Date"):
+				<input type="text" name="@nameof(UI_ItensSearch.Dt)" value="@ViewBag.search.Dt" class="form-control js-dt" />
+			</div>
+		</div>
+
+		<div class="btns">
+			<button type="submit" class="btn btn-primary"><svg class="icon icon-filter"><use xlink:href="#filter"></use></svg> @Html.Translate("Search")</button>
+			<a href="" class="btn btn-danger"><svg class="icon icon-cancel"><use xlink:href="#cancel"></use></svg> @Html.Translate("Clear")</a>
+		</div>
+	</form>
+
+	@if(Model.Count() == 0)
+	{
+		<div class="field-validation-error">@Html.Translate("No register found")</div>
+	}
+	else
+	{
+		<table class="table">
+			<thead>
+				<tr>
+					<th>@Html.Translate("Name")</th>
+					<th>@Html.Translate("Date")</th>
+					<th>@Html.Translate("Price")</th>
+					<th width="1"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				@foreach(var item in Model)
+				{
+					<tr>
+						<td>@item.Name</td>
+						<td>@item.Dt</td>
+						<td>@item.Price</td>
+						<td>
+							<a href="/Admin/CRUD/Edit/@item.Id" class="btn btn-primary btn-sm">
+								<svg class="icon icon-pencil"><use xlink:href="#pencil"></use></svg>
+							</a>
+
+							<a href="/Admin/CRUD/Delete/@item.Id" class="btn btn-danger btn-sm deleter">
+								<svg class="icon icon-trash-b"><use xlink:href="#trash-b"></use></svg>
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+		@if(!ViewBag.in_search)
+		{
+			@Html.PagedListPager((IPagedList)Model, page => "/Admin/CRUD/List?page=" + page, PaginationStyle.MIPaging)
+		}
+	}
+</div>

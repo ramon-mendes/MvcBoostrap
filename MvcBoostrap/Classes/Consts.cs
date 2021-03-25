@@ -36,6 +36,7 @@ namespace MvcBoostrap.Classes
 		public static readonly bool IS_WINDOWS = Environment.OSVersion.Platform == PlatformID.Win32NT;
 		public static readonly CultureInfo CULTURE_EN = new CultureInfo("en-us");
 		public static readonly CultureInfo CULTURE_PTBR = new CultureInfo("pt-br");
+		public const int PAGINATION_ITENS_PER_PAGE = 50;
 
 #if DEBUG
 		public const bool IN_DEBUG = true;

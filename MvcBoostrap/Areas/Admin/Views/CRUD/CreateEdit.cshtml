@@ -1,0 +1,60 @@
+﻿@model SampleItemModel
+@section head {
+}
+@section scripts {
+	<script>
+		$('#btn-save').click(function() {
+			$('#form-fields').submit();
+			return false;
+		});
+	</script>
+
+	@if(!ViewBag.is_create)
+	{
+		<script>
+		</script>
+	}
+}
+
+<nav>
+	@Html.Breadcrumb(I18N.GlobalTranslate(ViewBag.is_create ? "Create CRUD" : "Edit CRUD"), I18N.GlobalTranslate("Events"), "/Admin/CRUD/List")
+
+	<div class="actions">
+		<div class="container">
+			<div class="wrap">
+				<a href="" class="btn btn-primary" id="btn-save">
+					<svg class="icon icon-save"><use xlink:href="#save"></use></svg> @Html.Translate("Save")
+				</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<form method="post" id="form-fields">
+		<div class="form-group">
+			<label class="control-label">@Html.Translate("Name"):</label>
+			<input type="text" class="form-control" asp-for="Name" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label">@Html.Translate("Price"):</label>
+			<input type="text" class="form-control" asp-for="Price" />
+			<span asp-validation-for="Price" class="text-danger"></span>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label">@Html.Translate("Date"):</label>
+
+			<input type="date" class="form-control" asp-for="Dt" value="@Model.Dt.ToHTMLDate()" />
+
+			<span asp-validation-for="Dt" class="text-danger"></span>
+		</div>
+
+		@if(!ViewBag.is_create)
+		{
+			<input type="hidden" value="@Model.Id" asp-for="Id" />
+		}
+	</form>
+</div>

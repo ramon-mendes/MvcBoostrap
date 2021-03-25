@@ -1,0 +1,67 @@
+﻿@{
+	ViewData["Title"] = "Demo page";
+}
+@section scripts {
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+	<link href="~/lib/fancybox-master/dist/jquery.fancybox.min.css" rel="stylesheet" />
+	<script src="~/lib/fancybox-master/dist/jquery.fancybox.min.js"></script>
+
+	<script>
+		$('.js-example-basic-single').select2();
+
+		let map;
+
+		function initMap() {
+			const myLatLng = { lat: -25.363, lng: 131.044 };
+
+			const map = new google.maps.Map(
+				document.getElementById("map"),
+				{
+					zoom: 4,
+					center: myLatLng,
+				}
+			);
+
+			new google.maps.Marker({
+				position: myLatLng,
+				map,
+				title: "Hello World!",
+			});
+		}
+	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9ohnY9Suwq4jc1rSVK8UY9OshRU-xRM4&callback=initMap&libraries=&v=weekly"
+			async></script>
+}
+@section head {
+	<style>
+		.fancybox img {
+			max-width: 150px;
+		}
+
+		#map {
+			height: 300px;
+		}
+	</style>
+}
+
+<p>Select 2</p>
+<select class="js-example-basic-single" name="state">
+	<option value="AL">Alabama</option>
+	<option value="WY">Wyoming</option>
+</select>
+
+<div>
+	<p>Fancybox</p>
+	<a class="fancybox" data-fancybox="gallery" href="~/img/photo-1534067783941-51c9c23ecefd.jpg"><img src="~/img/photo-1534067783941-51c9c23ecefd.jpg" /></a>
+	<a class="fancybox" data-fancybox="gallery" href="~/img/photo-1523233164-6a0d50bd4618.jpg"><img src="~/img/photo-1523233164-6a0d50bd4618.jpg" /></a>
+	<a class="fancybox" data-fancybox="gallery" href="~/img/photo-1482059470115-0aadd6bf6834.jpg"><img src="~/img/photo-1482059470115-0aadd6bf6834.jpg" /></a>
+	<a class="fancybox" data-fancybox="gallery" href="~/img/photo-1482398650355-d4c6462afa0e.jpg"><img src="~/img/photo-1482398650355-d4c6462afa0e.jpg" /></a>
+</div>
+
+<div>
+	<p>Google maps + marker</p>
+	<div id="map"></div>
+</div>
