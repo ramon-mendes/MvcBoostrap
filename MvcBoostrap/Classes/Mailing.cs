@@ -9,6 +9,11 @@ namespace MvcBoostrap.Classes
 {
 	public class Mailing
 	{
+		public static void SendTheMasterMail(string subject, string msg)
+		{
+			SendMail("rfmendesbrazil@gmail.com", "rfmendesbrazil@gmail.com", subject, msg);
+		}
+
 		public static void SendMail(string to, string from, string subject, string msg)
 		{
 			MailMessage mail = new MailMessage();
@@ -23,7 +28,7 @@ namespace MvcBoostrap.Classes
 				smtp.Port = 587;
 				smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 				smtp.UseDefaultCredentials = false;
-				smtp.Credentials = new NetworkCredential("", "");
+				smtp.Credentials = new NetworkCredential("rfmendesbrazil@gmail.com", "atfi3fs9");
 				smtp.Send(mail);
 			}
 		}
