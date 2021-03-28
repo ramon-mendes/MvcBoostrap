@@ -28,7 +28,7 @@ namespace MvcBoostrap.Classes
 				smtp.Port = 587;
 				smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 				smtp.UseDefaultCredentials = false;
-				smtp.Credentials = new NetworkCredential("rfmendesbrazil@gmail.com", "atfi3fs9");
+				smtp.Credentials = new NetworkCredential("", "");
 				smtp.Send(mail);
 			}
 		}
