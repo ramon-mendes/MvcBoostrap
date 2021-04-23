@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="wrap">
 				<a href="/Admin/CRUD/Add" class="btn btn-primary">
-					<svg class="icon icon-plus-2"><use xlink:href="#plus-2"></use></svg> @Html.Translate("Add")
+					<svg class="icon icon-plus-2"><use xlink:href="#plus-2"></use></svg> @Html.Translate("Adicionar")
 				</a>
 			</div>
 		</div>
@@ -46,16 +46,16 @@
 
 	@if(Model.Count() == 0)
 	{
-		<div class="field-validation-error">@Html.Translate("No register found")</div>
+		<div class="field-validation-error">@Html.Translate("Nenhum registro encontrado")</div>
 	}
 	else
 	{
 		<table class="table">
 			<thead>
 				<tr>
-					<th>@Html.Translate("Name")</th>
-					<th>@Html.Translate("Date")</th>
-					<th>@Html.Translate("Price")</th>
+					<th>@Html.Translate("Nome")</th>
+					<th>@Html.Translate("Data")</th>
+					<th>@Html.Translate("Preço")</th>
 					<th width="1"></th>
 				</tr>
 			</thead>

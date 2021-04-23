@@ -26,7 +26,7 @@ namespace MvcBoostrap.Areas.Admin.Controllers
 			ViewBag.in_search = search != null;
 		}
 
-		// GET: /Admin/Purchase/List
+		// GET: /Admin/CRUD/List
 		public IActionResult List(int? page)
 		{
 			SetupSearch();
@@ -37,7 +37,7 @@ namespace MvcBoostrap.Areas.Admin.Controllers
 			return View(list);
 		}
 
-		// POST: /Admin/Purchase/List
+		// POST: /Admin/CRUD/List
 		[HttpPost]
 		public IActionResult List(UI_ItensSearch search)
 		{
@@ -54,13 +54,13 @@ namespace MvcBoostrap.Areas.Admin.Controllers
 			return View(list);
 		}
 
-		// GET: /Admin/Event/Add
+		// GET: /Admin/CRUD/Add
 		public IActionResult Add()
 		{
 			return RetAddView(new SampleItemModel() { Dt = DateTime.Now.Date });
 		}
 
-		// POST: /Admin/Event/Add
+		// POST: /Admin/CRUD/Add
 		[HttpPost]
 		public IActionResult Add(SampleItemModel model)
 		{

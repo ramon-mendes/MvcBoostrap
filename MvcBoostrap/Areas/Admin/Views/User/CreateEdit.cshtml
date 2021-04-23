@@ -1,4 +1,4 @@
-﻿@model SampleItemModel
+﻿@model UserModel
 @section head {
 }
 @section scripts {
@@ -17,7 +17,7 @@
 }
 
 <nav>
-	@Html.Breadcrumb(I18N.GlobalTranslate(ViewBag.is_create ? "Criar CRUD" : "Editar CRUD"), I18N.GlobalTranslate("Eventos"), "/Admin/CRUD/List")
+	@Html.Breadcrumb(I18N.GlobalTranslate(ViewBag.is_create ? "Criar usuário" : "Editar usuário"), I18N.GlobalTranslate("Usuários"), "/Admin/User/List")
 
 	<div class="actions">
 		<div class="container">
@@ -39,17 +39,21 @@
 		</div>
 
 		<div class="form-group">
-			<label class="control-label">@Html.Translate("Preço"):</label>
-			<input type="text" class="form-control" asp-for="Price" />
-			<span asp-validation-for="Price" class="text-danger"></span>
+			<label class="control-label">@Html.Translate("E-mail"):</label>
+			<input type="email" class="form-control" asp-for="Email" />
+			<span asp-validation-for="Email" class="text-danger"></span>
 		</div>
 
 		<div class="form-group">
-			<label class="control-label">@Html.Translate("Data"):</label>
+			<label class="control-label">@Html.Translate("Senha"):</label>
+			<input type="text" class="form-control" asp-for="PWD" />
+			<span asp-validation-for="PWD" class="text-danger"></span>
+		</div>
 
-			<input type="date" class="form-control" asp-for="Dt" value="@Model.Dt.ToHTMLDate()" />
-
-			<span asp-validation-for="Dt" class="text-danger"></span>
+		<div class="form-group">
+			<label class="control-label">@Html.Translate("Confirmação senha"):</label>
+			<input type="text" class="form-control" asp-for="PWD2" />
+			<span asp-validation-for="PWD2" class="text-danger"></span>
 		</div>
 
 		@if(!ViewBag.is_create)

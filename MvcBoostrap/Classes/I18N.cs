@@ -34,9 +34,9 @@ namespace MvcBoostrap.Classes
 			}
 		}
 
-		public static string GlobalTranslate(string key_en)
+		public static string GlobalTranslate(string key_pt)
 		{
-			return _singleton.Translate(key_en);
+			return _singleton.Translate(key_pt);
 		}
 
 		public IHtmlContent B2S(bool b)
